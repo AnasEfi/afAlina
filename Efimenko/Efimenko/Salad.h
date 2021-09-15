@@ -27,7 +27,7 @@ public:
 
 			for (auto& ptr:salad)
 			{
-				cout << "Фрукт" << ptr->name << '\n' << "Кол-во: " << ptr->amount << '\n' << "Цена:" << ptr->price << endl;
+				cout << "Фрукт" << '\n' << ptr->name << '\n' << "Кол-во: " << ptr->amount << '\n' << "Цена:" << ptr->price << endl;
 			}
 		} else cout << "рецептов нет" << endl;
 	}

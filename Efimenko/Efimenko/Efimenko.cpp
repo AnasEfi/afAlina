@@ -94,11 +94,9 @@ int main()
 			while (decision)
 			{
 				cout << "Добавьте фрукт" << endl;
-				Fruit_Efimenko Fruit;
-				Fruit_Efimenko* ptr = &Fruit;
-				Fruit.enter();
-				for_recipe.push_back(Fruit);
-				recipe.salad.push_back(ptr);
+				Fruit_Efimenko* ptr = new Fruit_Efimenko();
+				ptr->enter();
+				recipe.add_fruit(ptr);
 				cout << "Добавить еще фркукт? 1-да 0-нет" << endl;
 				cin >> decision;
 			}
