@@ -1,0 +1,8 @@
+fruit
+ananas
+12
+1
+fruit
+gfg
+2
+2
