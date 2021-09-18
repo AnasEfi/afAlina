@@ -8,8 +8,8 @@ using namespace std;
 class Fruit_Efimenko
 {
 public:
-	int amount = 0; //параметры по умолчанию
 	string name;
+	int amount = 0; //параметры по умолчанию
 	double price = 0;
 
 	void print()

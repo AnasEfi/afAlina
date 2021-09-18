@@ -1,0 +1,11 @@
+recipe
+Ice
+rus
+Fruit
+Ananas
+12
+20
+Fruit
+Peach
+30
+12

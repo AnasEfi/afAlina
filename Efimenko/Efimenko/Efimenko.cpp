@@ -12,14 +12,17 @@ using namespace std;
 
 void PrintMenu()
 {
-	cout << "1.Добавить фрукт на тарелку" << endl
+	cout << '\n' << "1.Добавить фрукт на тарелку" << endl
 		<< "2.Показать фрукты на тарелке" << endl
-		<< "3.Считать тарелку салата из фруктов" << endl
+		<< "3.Считать из файла тарелку салата из фруктов" << endl
 		<< "4.Сохранить тарелку салата" << endl
+		<< "==========================" << endl
 		<< "5.Записать рецепт салата" << endl
-		<< "6.Получить рецепт салата" << endl
-
-		<< "0.Выход" << endl
+		<< "6.Показать рецепт салата" << endl
+		<< "7.Сохранить рецепт в файл" << endl
+		<< "8.Считать рецепт из файла" << endl
+		<< "9.Удалить рецепт" << endl
+		<< "0.Выход" << '\n' << endl
 		<< "Выберите действие:";
 }
 
@@ -27,14 +30,14 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 	vector <Fruit_Efimenko> plate;
-	vector<Fruit_Efimenko> for_recipe;
-	vector <Salad> recipe2;
+	//vector<Fruit_Efimenko> for_recipe;
+	vector <Salad> book;
 	ofstream fout;
 	ifstream fin;
 	while (true)
 	{
 		PrintMenu();
-		switch (getCorrectNumber(0, 6))
+		switch (getCorrectNumber(0, 9))
 		{
 		case 1:
 		{
@@ -97,22 +100,69 @@ int main()
 				Fruit_Efimenko* ptr = new Fruit_Efimenko();
 				ptr->enter();
 				recipe.add_fruit(ptr);
-				cout << "Добавить еще фркукт? 1-да 0-нет" << endl;
+				cout << "Добавить еще фрукт? 1-да 0-нет" << endl;
 				cin >> decision;
 			}
-			recipe2.push_back(recipe);
+			book.push_back(recipe);
 			break;
 		}
 		case 6:
 		{
-			for (auto& item : recipe2)
+			if (book.size() == 0)
 			{
-				item.print();
+				cout << "Рецептов нет" << endl;
+				break;
 			}
-			
+			for (auto& item : book)
+				item.print();
 			break;
-
 		}
+		case 7:
+		{
+			fout.open("data2.txt", ios::out);
+			if (fout.is_open()) {
+				if (book.size() == 0)
+				{
+					cout << "Нет рецептов" << endl;
+					fout.close();
+					break;
+				}
+				for (Salad item : book)
+					item.save_recipe(fout);
+				fout.close();
+			}
+			else cout << "ошибка" << endl;
+			break;
+		}
+
+		case 8:
+		{
+			string data;
+			fin.open("data2.txt", ios::in);
+			if (!fin.is_open()) {
+				cout << "Ошибка при открытия файла" << endl;
+				break;
+			}
+			while (getline(fin, data))
+			{
+				Salad recipe;
+				recipe.load_recipe(fin);
+				book.push_back(recipe);
+			}
+			fin.close();
+			break;
+		}
+		case 9:
+		{
+			for (auto& recipe : book)
+			{
+				recipe.delvec();
+			}
+			book.clear();
+			break;
+		}
+
+
 		case 0: //выход
 		{
 			return 0;
