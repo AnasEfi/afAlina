@@ -41,7 +41,6 @@ public:
 
 	void save_recipe(ofstream& fout)
 	{
-		
 		fout << "recipe" << '\n' << name << '\n' << causin << '\n';
 		for (auto& ptr : salad)
 		fout<<"Fruit"<<'\n' << ptr->name << '\n' << ptr->amount << '\n' << ptr->price << endl;

@@ -30,7 +30,6 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 	vector <Fruit_Efimenko> plate;
-	//vector<Fruit_Efimenko> for_recipe;
 	vector <Salad> book;
 	ofstream fout;
 	ifstream fin;
@@ -85,7 +84,7 @@ int main()
 				}
 				else cout << "Файл пуст" << endl;
 			}
-			else cout << "ошибка" << endl;
+			else cout << "ошибка в открытии файла" << endl;
 			break;
 		}
 
@@ -131,7 +130,7 @@ int main()
 					item.save_recipe(fout);
 				fout.close();
 			}
-			else cout << "ошибка" << endl;
+			else cout << "ошибка в открытии файла" << endl;
 			break;
 		}
 
